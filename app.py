@@ -12,7 +12,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 # 接收 LINE 的資訊
-@app.route("/callback", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def callback():
 
     if request.method == "GET":
