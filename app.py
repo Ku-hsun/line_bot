@@ -34,7 +34,8 @@ def callback():
 def first_message(event):
     line_bot_api.reply_message(
          event.reply_token,
-        TextSendMessage(text="歡迎加入~~~"))
+         TextSendMessage(text="歡迎加入~~~"))
+    line_bot_api.reply_message(event.reply_token, reply)
 
 # 學你說話
 @handler.add(MessageEvent, message=TextMessage)
