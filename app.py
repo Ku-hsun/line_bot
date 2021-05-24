@@ -34,11 +34,18 @@ def callback():
 # 學你說話
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+        if (event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef"
+            and event.source.user_id != "U1110b9cf839a201aa15f37aaf5a71ea3"):
         try:
+            line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
+                                      TextSendMessage(text=str(event.source.user_id)))
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=str(event.source.user_id)))
+                TextSendMessage(text="good afternoon"))
+        except:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=event.message.text))
         except:
             line_bot_api.reply_message(
                 event.reply_token,
