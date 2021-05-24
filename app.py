@@ -36,11 +36,18 @@ def callback():
 def handle_message(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
-            line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                      TextSendMessage(text=str(event.source.user_id)))
-            line_bot_api.reply_message(
-                event.reply_token,
-                TextSendMessage(text=event.message.text))
+            if event.source.user_id =='U1110b9cf839a201aa15f37aaf5a71ea3':
+                line_bot_api.push_message('Ub90bfa0f7f6d95c8a306bc95f4f0fad4',
+                                          TextSendMessage(text=event.message.text))
+            elif event.source.user_id =='Ub90bfa0f7f6d95c8a306bc95f4f0fad4':
+                line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
+                                          TextSendMessage(text=str(event.source.user_id)))
+            else:
+                line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
+                                          TextSendMessage(text=event.message.text))
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    TextSendMessage(text=event.message.text))
         except:
             line_bot_api.reply_message(
                 event.reply_token,
