@@ -41,7 +41,7 @@ def handle_message(event):
                                           TextSendMessage(text=event.message.text))
             elif event.source.user_id =='Ub90bfa0f7f6d95c8a306bc95f4f0fad4':
                 line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                          TextSendMessage(text=str(event.source.user_id)))
+                                          TextSendMessage(text=event.message.text))
             else:
                 line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
                                           TextSendMessage(text=event.message.text))
