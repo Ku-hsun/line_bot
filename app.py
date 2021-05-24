@@ -35,7 +35,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
         if (event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef"
-            and event.source.user_id != "U1110b9cf839a201aa15f37aaf5a71ea3"):
+                and event.source.user_id != "U1110b9cf839a201aa15f37aaf5a71ea3"):
         try:
             line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
                                       TextSendMessage(text=str(event.source.user_id)))
