@@ -40,7 +40,7 @@ def handle_message(event):
                                       TextSendMessage(text=str(event.source.user_id)))
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text="good afternoon"))
+                TextSendMessage(text=event.message.text))
         except:
             line_bot_api.reply_message(
                 event.reply_token,
