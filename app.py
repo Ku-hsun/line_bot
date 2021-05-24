@@ -44,7 +44,7 @@ def handle_message(event):
                                           TextSendMessage(text=event.message.text))
             else:
                 line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                          TextSendMessage(text=event.message.text))
+                                          TextSendMessage(text=str(event.source.user_id)))
                 line_bot_api.reply_message(
                     event.reply_token,
                     TextSendMessage(text=event.message.text))
