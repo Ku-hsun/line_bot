@@ -38,7 +38,7 @@ def handle_message(event):
         try:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=str(event.source.user_id))
+                TextSendMessage(text=str(event.source.user_id)))
         except:
             line_bot_api.reply_message(
                 event.reply_token,
