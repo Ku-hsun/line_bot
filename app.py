@@ -35,9 +35,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text))
+        try:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=str(event.source.user_id))
+        except:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=event.message.text))
         
     # Send To Line
     # reply =TextSendMessage(text = fun1+'$ LINE 0x100001 $', emojis=[emoji])
