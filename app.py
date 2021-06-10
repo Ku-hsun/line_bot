@@ -37,17 +37,12 @@ def handle_message(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
             if event.source.user_id =='U1110b9cf839a201aa15f37aaf5a71ea3':
-                line_bot_api.push_message('Ub90bfa0f7f6d95c8a306bc95f4f0fad4',
-                                          TextSendMessage(text=event.message.text))
-            elif event.source.user_id =='Ub90bfa0f7f6d95c8a306bc95f4f0fad4':
                 line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                          TextSendMessage(text=event.message.text))
-            else:
-                line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                          TextSendMessage(text=str(event.source.user_id)))
-                line_bot_api.reply_message(
-                    event.reply_token,
-                    TextSendMessage(text=event.message.text))
+                                          ImageSendMessage(
+                                              original_content_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34',
+                                              preview_image_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34'
+                                          ))
+
         except:
             line_bot_api.reply_message(
                 event.reply_token,
