@@ -46,7 +46,7 @@ def handle_message(event):
         except:
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=event.message.text))
+                TextSendMessage(text='沒收到訊息再發送一次'))
         
     # Send To Line
     # reply =TextSendMessage(text = fun1+'$ LINE 0x100001 $', emojis=[emoji])
