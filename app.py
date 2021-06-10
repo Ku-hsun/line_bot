@@ -36,9 +36,10 @@ def callback():
 def handle_message(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
-            if event.message.text == "圖片": line_bot_api.reply_message(event.reply_token,
-                                                                      ImageSendMessage(original_content_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34',
-                                                                                       preview_image_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34'))
+            if event.message.text == "圖片": 
+                line_bot_api.reply_message(event.reply_token,
+                               ImageSendMessage(original_content_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34',
+                               preview_image_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34'))
 
         except:
             line_bot_api.reply_message(
