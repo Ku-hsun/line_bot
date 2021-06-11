@@ -42,7 +42,7 @@ def handle_message(event):
     # 排除測試數據
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
-            if nowtime == "2021_06_11_06_22":
+            if nowtime == "2021_06_11_06_22_06_23":
                 random_img_url = 'https://obs.line-scdn.net/0hnNQgOqVAMWFsHieD8Z9ONk1DOgNffC9qTnh5A00WblhDL39ZVnx2UEhNZgRDfnU3VysqASceZwNJK3cxUz1_UhsePFcTKQ/f256x256'
 
                 line_bot_api.push_message(
