@@ -49,7 +49,8 @@ def handle_message(event):
                         preview_image_url=random_img_url
                     )
                 )
-                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url, preview_image_url))      except:
+                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url, preview_image_url))      
+       except:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='沒收到訊息再發送一次'))
