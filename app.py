@@ -49,8 +49,7 @@ def handle_message(event):
                         preview_image_url=random_img_url
                     )
                 )
-                
-                
+
         except:
             line_bot_api.reply_message(
                 event.reply_token,
