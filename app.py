@@ -40,11 +40,16 @@ def handle_message(event):
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
             if event.message.text == "圖片":
-                original_content_url, preview_image_url = 'https://obs.line-scdn.net/0hnNQgOqVAMWFsHieD8Z9ONk1DOgNffC9qTnh5A00WblhDL39ZVnx2UEhNZgRDfnU3VysqASceZwNJK3cxUz1_UhsePFcTKQ/f256x256'
-                line_bot_api.reply_message(event.reply_token,
-                                           ImageSendMessage(original_content_url,
-                                                            preview_image_url))
-        except:
+                random_img_url, original_content_url, preview_image_url = 'https://obs.line-scdn.net/0hnNQgOqVAMWFsHieD8Z9ONk1DOgNffC9qTnh5A00WblhDL39ZVnx2UEhNZgRDfnU3VysqASceZwNJK3cxUz1_UhsePFcTKQ/f256x256'
+
+                line_bot_api.reply_message(
+                    event.reply_token,
+                    ImageSendMessage(
+                        original_content_url=random_img_url,
+                        preview_image_url=random_img_url
+                    )
+                )
+                line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url, preview_image_url))      except:
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text='沒收到訊息再發送一次'))
