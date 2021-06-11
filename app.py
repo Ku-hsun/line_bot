@@ -7,18 +7,12 @@ from linebot.models import MessageEvent
 from linebot.models import TextMessage, ImageMessage
 from linebot.models import TextSendMessage, ImageSendMessage
 
-import datetime
-import time
-
-while True:
-    nowtime = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    time.sleep(1)
-
 app = Flask(__name__)
 # LINE 聊天機器人的基本資料
 line_bot_api = LineBotApi(os.environ.get("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.environ.get("CHANNEL_SECRET"))
 
+link = "https://lh5.googleusercontent.com/LOeIgT3Bqp3KZsS08ExOd6QkInBVgoz51S9PXBTaiB3_BF1-KphsocQSGNEPP7cEpmU_9clm7Wee_ybMULEdWjX6ByB6P_wlL9xmApUflb-K_PFL6oPs0KunvqywYD_C5-fsRm5pDQ"
 
 # 接收 LINE 的資訊
 @app.route("/", methods=["GET", "POST"])
@@ -42,11 +36,11 @@ def handle_message(event):
     # 排除測試數據
     if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
         try:
-            if nowtime == "2021_06_11_06_22_06_23":
+            if event.message.text == "圖片":
                 random_img_url = 'https://obs.line-scdn.net/0hnNQgOqVAMWFsHieD8Z9ONk1DOgNffC9qTnh5A00WblhDL39ZVnx2UEhNZgRDfnU3VysqASceZwNJK3cxUz1_UhsePFcTKQ/f256x256'
 
-                line_bot_api.push_message(
-                    "U1110b9cf839a201aa15f37aaf5a71ea3",
+                line_bot_api.reply_message(
+                    event.reply_token,
                     ImageSendMessage(
                         original_content_url=random_img_url,
                         preview_image_url=random_img_url
