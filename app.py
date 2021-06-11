@@ -31,21 +31,23 @@ def callback():
 
 
 
-# 學你說話
+# 收發訊息
+# 當收到 MessageEvent (信息事件)，而且信息是屬於 TextMessage (文字信息)的時候，就執行下列程式碼。
 @handler.add(MessageEvent, message=TextMessage)
+# 定義一個函數，該函數會接收 LINE 發送過來的資訊，並貼上event的標籤，方便後續的操作。
 def handle_message(event):
     # 排除測試數據
-    # if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-    try:
-        if event.message.text == "圖片":
-            line_bot_api.reply_message(event.reply_token,
-                                       ImageSendMessage(original_content_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34',
-                                                        preview_image_url='https://firebasestorage.googleapis.com/v0/b/fast-mariner-312118.appspot.com/o/2021_06_08%2Fsleep_2021_06_08_17_54_17_481872.png?alt=media&token=2dadb535-c1c4-48f8-867c-38114db30d34'))
-
-    except:
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text='沒收到訊息再發送一次'))
+    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+        try:
+            if event.message.text == "圖片":
+                original_content_url, preview_image_url = 'https://obs.line-scdn.net/0hnNQgOqVAMWFsHieD8Z9ONk1DOgNffC9qTnh5A00WblhDL39ZVnx2UEhNZgRDfnU3VysqASceZwNJK3cxUz1_UhsePFcTKQ/f256x256'
+                line_bot_api.reply_message(event.reply_token,
+                                           ImageSendMessage(original_content_url,
+                                                            preview_image_url))
+        except:
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text='沒收到訊息再發送一次'))
         
     # Send To Line
     # reply =TextSendMessage(text = fun1+'$ LINE 0x100001 $', emojis=[emoji])
