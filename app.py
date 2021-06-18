@@ -1,9 +1,9 @@
 import os
 from flask import Flask, abort, request
-import urllib
 import pyrebase
-import datetime
-import time
+from datetime import datetime, timedelta
+from time import sleep
+import urllib
 
 # https://github.com/line/line-bot-sdk-python
 from linebot import LineBotApi, WebhookHandler
@@ -46,8 +46,10 @@ while True:
         time.sleep(2)
     except:
         pass'''
-#random_img_url = clourl
-random_img_url = 'https://miro.medium.com/max/12000/0*pc9GET-Mnc6G8CRJ'
+# random_img_url = clourl
+while True:
+    random_img_url = 'https://miro.medium.com/max/12000/0*pc9GET-Mnc6G8CRJ'
+    sleep(5)
 # 接收 LINE 的資訊
 @app.route("/", methods=["GET", "POST"])
 def callback():
@@ -61,28 +63,22 @@ def callback():
         except InvalidSignatureError:
             abort(400)
         return "OK"
-while True:
-    try:
-        line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-                                  ImageSendMessage(
-                                      original_content_url=random_img_url,
-                                      preview_image_url=random_img_url))
-    except LineBotApiError as e:
-        # error handle
-        ...
+
 
 # 收發訊息
 # 當收到 MessageEvent (信息事件)，而且信息是屬於 TextMessage (文字信息)的時候，就執行下列程式碼。
-'''@handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage)
 # 定義一個函數，該函數會接收 LINE 發送過來的資訊，並貼上event的標籤，方便後續的操作。
 def handle_message(event):
-    # 排除測試數據
-    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-        while True:
+    while True:
+        try:
             line_bot_api.push_message('U1110b9cf839a201aa15f37aaf5a71ea3',
-            ImageSendMessage(original_content_url=random_img_url,
-                             preview_image_url=random_img_url))
-            time.sleep(1)'''
+                                      ImageSendMessage(
+                                          original_content_url=random_img_url,
+                                          preview_image_url=random_img_url))
+        except LineBotApiError as e:
+            # error handle
+            ...
 
 if __name__ == "__main__":
     app.run()
